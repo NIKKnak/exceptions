@@ -1,18 +1,32 @@
-// Реализуйте 3 метода, чтобы в каждом из них получить разные исключения
+//Р РµР°Р»РёР·СѓР№С‚Рµ 3 РјРµС‚РѕРґР°, С‡С‚РѕР±С‹ РІ РєР°Р¶РґРѕРј РёР· РЅРёС… РїРѕР»СѓС‡РёС‚СЊ СЂР°Р·РЅС‹Рµ РёСЃРєР»СЋС‡РµРЅРёСЏ
 
 
+public class exceptions1 {
+    public static void main(String[] args) {
+        String[] sArray = {"first str", null, "third str"};
+        int[] array = {1,2,3,4,5,6,7,8,9,10,11,12};
+        division(10, 0);
+        printValueByIndex(array,12);
+        printStringArray(sArray);
 
-// Посмотрите на код, и подумайте сколько разных типов исключений вы тут сможете получить? 
-// public static int sum2d(String[][] arr){ int sum = 0; for (int i = 0; i < arr.length; i++)
-// { for (int j = 0; j < 5; j++) { int val = Integer.parseInt(arr[i][j]); sum += val; } } return sum; }
+    }
+    // division by zero
+    public static void division(double firstNum, double secondNum){
+        if(secondNum ==  0) throw new ArithmeticException("РќР° РЅРѕР»СЊ РґРµР»РёС‚СЊ РЅРµР»СЊР·СЏ!!!");
+        double result = firstNum/secondNum;
+        System.out.printf("Р РµР·СѓР»СЊС‚Р°С‚ РґРµР»РµРЅРёСЏ %f РЅР° %f СЂР°РІРµРЅ %f.\n", firstNum, secondNum, result);
+    }
+    // out of bounds
+    public static void printValueByIndex(int[] array, int index){
+        if(index > array.length-1) throw new ArrayIndexOutOfBoundsException("Р­Р»РµРјРµРЅС‚Р° РїРѕРґ С‚Р°РєРёРј РёРЅРґРµРєСЃРѕРј РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚");
+        else System.out.printf("Р­Р»РµРјРµРЅС‚ СЃ РёРЅРґРµРєСЃРѕРј %d СЂР°РІРµРЅ %d.\n",index, array[index]);
+    }
 
-
-
-// Реализуйте метод, принимающий в качестве аргументов два целочисленных массива, и возвращающий новый массив,
-// каждый элемент которого равен частному элементов двух входящих массивов в той же ячейке.
-// Если длины массивов не равны, необходимо как-то оповестить пользователя.
-// Важно: При выполнении метода единственное исключение,
-// которое пользователь может увидеть - RuntimeException, т.е. ваше
-
-
-
+    // Null pointer exception
+    public static void printStringArray(String[] sArray){
+        for (String item: sArray){
+            if(item == null) throw new NullPointerException("Р­Р»РµРјРµРЅС‚ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚!!!");
+            System.out.println(item);
+        }
+    }
+}
